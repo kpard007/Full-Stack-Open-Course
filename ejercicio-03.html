@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My test page</title>
+    
+</head>
+    <style>
+        
+
+        form{ 
+            /*centrar el formulario en la pagina */
+            margin: 0 auto;
+            width: 400px;
+
+            /* esquema del formulario */
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 1em;
+        }
+        ul { 
+            /*Elimina espacios no necesarios entre el textarea*/
+            list-style: none; 
+            padding: 0; 
+            margin: 0;
+
+        }
+        form li + li{
+            /* Ni puta idea que hace esto.*/
+            margin-top: 1em;
+        
+        }
+
+        label {
+            /*Tamaño y alineacion uniforme para las etiquetas
+            que estén centradas basicamente.*/
+            display: inline-block;
+            width: 90px;
+        }
+
+        input, textarea{
+            /*Para asegurarse de que todos los campos de texto tienen la misma configuracion de letra
+            Por defecto, las áreas de texto tienen un tipo de letra monoespaciada*/
+            font: 1em sans-serif;
+
+            /*Esto es para el ancho de el input y para ordernarlo luego de cambiar su tamaño*/
+            width: 300px;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+        
+        input:focus, textarea:focus{
+            border-color: #000;
+            
+        }
+
+        textarea{
+            /*Esto alinea el texto de "mensaje" al mismo nivel que los inputs superiores*/
+            vertical-align: top;
+            height: 5em; 
+        }
+
+        .button{
+            /*Para alinear los botones con los campos de texto*/
+            padding-left: 90px;
+            
+        }
+
+        button {
+            /*Este margen adicional representa aproximadamente el mismo espacio
+            que el espacio entre las etiquetas y sus campos de texto*/
+            margin-left: 0.5em;
+        }
+
+        p{
+            text-align: center;
+        }
+
+    </style>
+<body>
+    <p>This is my page</p>
+
+    <form action ="/my-handling-form-page" method="post">
+        <ul>
+            <li>
+                <label for="name"> Name </label>
+                <input type="text" id ="name" name="user_name"/>
+            </li>
+            <li>
+                <label for ="email">Email</label>
+                <input type="email" id ="mail" name="user_mail"/> 
+            </li>
+            <li>
+                <label for ="msg">Message</label>
+                <textarea id ="msg" name="user_message">Por defecto este elemento contiene texto</textarea>
+            </li>
+
+            <li class ="button">
+                <button type="submit">Envie su mensaje</button>
+            </li>
+        </ul>
+        <!--https://developer.mozilla.org/es/docs/Learn_web_development/Extensions/Forms/Your_first_form-->
+    </form> 
+</body>
+</html>
