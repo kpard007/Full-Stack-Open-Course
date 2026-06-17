@@ -1,17 +1,8 @@
-
- /*Mi reto para ti (Sin darte la solución):
-Olvida el ejercicio por un segundo. Imagina que quieres crear un componente llamado Saludo.
-¿Cómo escribirías la función Saludo para que reciba un nombre y diga "Hola [nombre]"? (Recuerda que el "sobre" se llama props).
-¿Cómo llamarías a ese componente desde App para saludar a "Ken"?
-Si logras entender ese pequeño saludo, habrás entendido el 90% de React. Las props son solo etiquetas en un sobre para pasar información de un componente padre a un componente hijo.
-¿Te animas a intentar ese mini-ejercicio del Saludo? No te preocupes por el ejercicio 1.2 todavía. Cuéntame cómo lo escribirías. */
-
 const Header = (props)=> {
-  
   return(
     
       <h1>
-        {props.course}
+        {props.course.name}
       </h1>
     
   )
@@ -19,29 +10,39 @@ const Header = (props)=> {
 
 
 const Part = (props) => {
-
+  console.log(props)
     return (
+      
         <div>
-            <strong>
-                {props.part} {props.exercise}
-            </strong>
+            <p>
+                {props.name1}<br/>
+                {props.excercise1}<br/>
+                {props.name2}<br/>
+                {props.excercise2}<br/>
+                {props.name3}<br/>
+                {props.excercise3}
+            </p>
         </div>
-    )
+    )   
 }
 
 const Content = (props) => {
-    
+    console.log(props)
     return (
-        <div>
-            <Part part = {props.part1} exercise = {props.exercise1} />
-            <Part part = {props.part2} exercise = {props.exercise2} />
-            <Part part = {props.part3} exercise = {props.exercise3} />
+        <div>   
+            <Part  
+                name1 = {props.course.parts[0].name} excercise1 = {props.course.parts[0].exercises}
+                name2 = {props.course.parts[1].name} excercise2 = {props.course.parts[1].exercises}
+                name3 = {props.course.parts[2].name} excercise3 = {props.course.parts[2].exercises}
+            />
+            
         </div>
+        
     )
 }
 
-
 const Total = (props) => {
+
   return (
     <div>
       <p>Number of exercises {props.total}</p>
@@ -51,28 +52,35 @@ const Total = (props) => {
 
 
 const App = () =>{
+  
+    const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
-  const course = 'Half Stack application development'
-
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of component'
-  const exercises3 = 14
-  const total = exercises1 + exercises2 + exercises3
- 
-
-
+  const total = course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises
+  
   return(
+    
     <div>
-      <Header course={course} />
+      <Header course = {course}/>
       <Content 
-        part1 = {part1} exercises1 = {exercises1}
-        part2 = {part2} exercises2 = {exercises2} 
-        part3 = {part3} exercises3 = {exercises3}
+        course = {course}
       />
-      <Total total = {total} />
+      <Total total = {total}/>
       
     </div>  
   )
