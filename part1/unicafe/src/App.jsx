@@ -57,6 +57,7 @@ const Statistics = (props) => {
         <tbody>
           <StatisticLine text = 'good' value = {props.good}/>
           <StatisticLine text = 'neutral' value = {props.neutral}/>
+          <StatisticLine text = 'bad' value = {props.bad} />
           <StatisticLine text = 'all' value = {props.totalComents}/>
           <StatisticLine text = 'average' value = {props.totalAverage}/>
           <StatisticLine text = 'postive' value = {props.percentagePositive}/>
